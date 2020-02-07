@@ -18,7 +18,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
  */
 public class FlutterMsaSdkPlugin implements FlutterPlugin, MethodCallHandler {
     private final static FlutterMsaSdkPlugin plugin = new FlutterMsaSdkPlugin();
-    private final static MiitHelper helper = new MiitHelper();
+    private final static MsaHelper helper = new MsaHelper();
     private MethodChannel channel;
 
     /**
@@ -39,8 +39,12 @@ public class FlutterMsaSdkPlugin implements FlutterPlugin, MethodCallHandler {
     private void initializePlugin(Context context, BinaryMessenger messenger) {
         this.channel = new MethodChannel(messenger, "flutter_msa_sdk");
         channel.setMethodCallHandler(this);
-        JLibrary.InitEntry(context);
-        helper.getDeviceIds(context);
+        try {
+            JLibrary.InitEntry(context);
+            helper.getDeviceIds(context);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

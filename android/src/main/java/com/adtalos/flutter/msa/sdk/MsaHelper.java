@@ -3,11 +3,11 @@ package com.adtalos.flutter.msa.sdk;
 import android.content.Context;
 
 import com.bun.miitmdid.core.ErrorCode;
-import com.bun.miitmdid.core.IIdentifierListener;
 import com.bun.miitmdid.core.MdidSdkHelper;
-import com.bun.miitmdid.supplier.IdSupplier;
+import com.bun.supplier.IIdentifierListener;
+import com.bun.supplier.IdSupplier;
 
-public class MiitHelper implements IIdentifierListener {
+public class MsaHelper implements IIdentifierListener {
     private String oaid;
     private String vaid;
     private String aaid;
@@ -62,6 +62,5 @@ public class MiitHelper implements IIdentifierListener {
         oaid = _supplier.getOAID();
         vaid = _supplier.getVAID();
         aaid = _supplier.getAAID();
-        _supplier.shutDown();
     }
 }
