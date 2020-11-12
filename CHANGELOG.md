@@ -1,3 +1,7 @@
+## 1.0.23
+
+* Update MSA SDK to v1.0.23.
+
 ## 1.0.13+1
 
 * Upgrade Android X.
