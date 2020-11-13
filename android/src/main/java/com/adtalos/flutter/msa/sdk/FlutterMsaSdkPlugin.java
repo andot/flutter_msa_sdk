@@ -3,8 +3,6 @@ package com.adtalos.flutter.msa.sdk;
 import android.content.Context;
 import androidx.annotation.NonNull;
 
-import com.bun.miitmdid.core.JLibrary;
-
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MethodCall;
@@ -40,7 +38,6 @@ public class FlutterMsaSdkPlugin implements FlutterPlugin, MethodCallHandler {
         this.channel = new MethodChannel(messenger, "flutter_msa_sdk");
         channel.setMethodCallHandler(this);
         try {
-            JLibrary.InitEntry(context);
             helper.getDeviceIds(context);
         } catch (Exception e) {
             e.printStackTrace();
