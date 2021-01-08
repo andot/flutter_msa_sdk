@@ -54,6 +54,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.aar'])
-    implementation files('libs/oaid_sdk_1.0.23.aar')
+    implementation files('libs/oaid_sdk_1.0.25.aar')
     implementation 'androidx.annotation:annotation:1.1.0'
 }
