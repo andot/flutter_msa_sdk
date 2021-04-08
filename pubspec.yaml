@@ -1,11 +1,12 @@
 name: flutter_msa_sdk
 description: MSA SDK for Flutter. You can use this plugin
-  to get OAID, VAID and AAID on Android device.
-version: 1.0.25
+  to get OAID on Android device.
+version: 3.0.2
 homepage: https://github.com/adtalos/flutter_msa_sdk
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
+  flutter: ">=1.10.0"
 
 dependencies:
   flutter:

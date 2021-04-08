@@ -1,7 +1,12 @@
 package com.adtalos.flutter.msa.sdk;
 
 import android.content.Context;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
+
+import com.github.gzuliyujiang.oaid.DeviceID;
+import com.github.gzuliyujiang.oaid.IGetter;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.BinaryMessenger;
@@ -16,7 +21,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
  */
 public class FlutterMsaSdkPlugin implements FlutterPlugin, MethodCallHandler {
     private final static FlutterMsaSdkPlugin plugin = new FlutterMsaSdkPlugin();
-    private final static MsaHelper helper = new MsaHelper();
+    private Context context;
     private MethodChannel channel;
 
     /**
@@ -37,11 +42,7 @@ public class FlutterMsaSdkPlugin implements FlutterPlugin, MethodCallHandler {
     private void initializePlugin(Context context, BinaryMessenger messenger) {
         this.channel = new MethodChannel(messenger, "flutter_msa_sdk");
         channel.setMethodCallHandler(this);
-        try {
-            helper.getDeviceIds(context);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        this.context = context;
     }
 
     @Override
@@ -54,19 +55,22 @@ public class FlutterMsaSdkPlugin implements FlutterPlugin, MethodCallHandler {
     }
 
     @Override
-    public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
+    public void onMethodCall(@NonNull MethodCall call, @NonNull final Result result) {
         switch (call.method) {
             case "isSupport":
-                result.success(helper.isSupport());
+                result.success(DeviceID.supported(context));
                 return;
             case "getOAID":
-                result.success(helper.getOAID());
-                return;
-            case "getVAID":
-                result.success(helper.getVAID());
-                return;
-            case "getAAID":
-                result.success(helper.getAAID());
+                DeviceID.getOAID(context, new IGetter() {
+                    @Override
+                    public void onOAIDGetComplete(@NonNull String oaid) {
+                        result.success(oaid);
+                    }
+                    @Override
+                    public void onOAIDGetError(@NonNull Throwable error) {
+                        result.success("ooxx");
+                    }
+                });
                 return;
             default:
                 result.notImplemented();

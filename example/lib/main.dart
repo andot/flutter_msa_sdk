@@ -13,8 +13,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   bool _isSupport;
   String _oaid;
-  String _vaid;
-  String _aaid;
 
   @override
   void initState() {
@@ -26,8 +24,6 @@ class _MyAppState extends State<MyApp> {
   Future<void> initPlatformState() async {
     bool isSupport = await FlutterMsaSdk.isSupport();
     String oaid = await FlutterMsaSdk.getOAID();
-    String vaid = await FlutterMsaSdk.getVAID();
-    String aaid = await FlutterMsaSdk.getAAID();
 
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
@@ -37,8 +33,6 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _isSupport = isSupport;
       _oaid = oaid;
-      _vaid = vaid;
-      _aaid = aaid;
     });
   }
 
@@ -51,9 +45,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: Text('isSupport: $_isSupport\n'
-              'OAID: $_oaid\n'
-              'VAID: $_vaid\n'
-              'AAID: $_aaid\n'),
+              'OAID: $_oaid\n'),
         ),
       ),
     );

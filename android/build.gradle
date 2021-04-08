@@ -16,9 +16,7 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
-        flatDir {
-            dirs 'libs'
-        }
+        maven { url 'https://jitpack.io' }
     }
 }
 
@@ -53,7 +51,12 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.aar'])
-    implementation files('libs/oaid_sdk_1.0.25.aar')
+    implementation 'com.github.gzu-liyujiang.Android_CN_OAID:OAID_ASUS:3.0.2' //华硕
+    implementation 'com.github.gzu-liyujiang.Android_CN_OAID:OAID_BUN:3.0.2' //中兴、卓易
+    implementation 'com.github.gzu-liyujiang.Android_CN_OAID:OAID_HEYTAP:3.0.2' //欧珀、一加
+    implementation 'com.github.gzu-liyujiang.Android_CN_OAID:OAID_SAMSUNG:3.0.2' //三星
+    implementation 'com.github.gzu-liyujiang.Android_CN_OAID:OAID_UODIS:3.0.2' //华为
+    implementation 'com.github.gzu-liyujiang.Android_CN_OAID:OAID_ZUI:3.0.2' //联想、摩托罗拉
+    implementation 'com.github.gzu-liyujiang.Android_CN_OAID:OAID_IMPL:3.0.2' //具体实现
     implementation 'androidx.annotation:annotation:1.1.0'
 }
