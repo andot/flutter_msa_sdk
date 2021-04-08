@@ -1,6 +1,6 @@
 ## 3.0.2
 
-* Use (Android_CN_OAID)[https://github.com/gzu-liyujiang/Android_CN_OAID] instead of MSA SDK.
+* Use [Android_CN_OAID](https://github.com/gzu-liyujiang/Android_CN_OAID) instead of MSA SDK.
 * Removed getVAID.
 * Removed getAAID.
 
