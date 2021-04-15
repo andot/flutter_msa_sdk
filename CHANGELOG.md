@@ -1,3 +1,7 @@
+## 3.0.3
+
+* Add HONOR, REDMI, IQOO, REALME etc support.
+
 ## 3.0.2
 
 * Use [Android_CN_OAID](https://github.com/gzu-liyujiang/Android_CN_OAID) instead of MSA SDK.
