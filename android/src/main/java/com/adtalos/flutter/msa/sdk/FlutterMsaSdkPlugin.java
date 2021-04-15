@@ -1,7 +1,6 @@
 package com.adtalos.flutter.msa.sdk;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -58,7 +57,7 @@ public class FlutterMsaSdkPlugin implements FlutterPlugin, MethodCallHandler {
     public void onMethodCall(@NonNull MethodCall call, @NonNull final Result result) {
         switch (call.method) {
             case "isSupport":
-                result.success(DeviceID.supported(context));
+                result.success(DeviceID.supportedOAID(context));
                 return;
             case "getOAID":
                 DeviceID.getOAID(context, new IGetter() {
@@ -66,6 +65,7 @@ public class FlutterMsaSdkPlugin implements FlutterPlugin, MethodCallHandler {
                     public void onOAIDGetComplete(@NonNull String oaid) {
                         result.success(oaid);
                     }
+
                     @Override
                     public void onOAIDGetError(@NonNull Throwable error) {
                         result.success("ooxx");
